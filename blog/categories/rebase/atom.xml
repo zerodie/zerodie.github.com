@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rebase | 李嘉玲的技術筆記]]></title>
+  <link href="http://zerodie.github.com/blog/categories/rebase/atom.xml" rel="self"/>
+  <link href="http://zerodie.github.com/"/>
+  <updated>2013-10-22T12:21:53+08:00</updated>
+  <id>http://zerodie.github.com/</id>
+  <author>
+    <name><![CDATA[ChiaChia Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[如何合併多個commits]]></title>
+    <link href="http://zerodie.github.com/blog/2012/01/19/git-rebase-i/"/>
+    <updated>2012-01-19T20:29:00+08:00</updated>
+    <id>http://zerodie.github.com/blog/2012/01/19/git-rebase-i</id>
+    <content type="html"><![CDATA[<p>如果你使用git做版本控管，在一個branch上開發一段時間後，commits看起來又多又雜亂，這個時候你可能會需要整理你的commits，將多個commits合併成1個，而git提供了一個指令可以幫助你完成這件事情：git rebase -i</p>
+
+<!-- more -->
+
+
+<p>一個簡單的範例，目標是：
+將原本git log</p>
+
+<pre><code>a
+b1
+b2
+</code></pre>
+
+<p>變成</p>
+
+<pre><code>a
+b
+</code></pre>
+
+<p>也就是將兩個commits，b1和b2，合併成為b。
+那麼方法和步驟如下：</p>
+
+<p><strong>Step1：$ git rebase -i &lt;不變動的commit的SHA-1></strong></p>
+
+<p>例如此例就是a的SHA-1 (可用git log查看該commit的版本號)</p>
+
+<pre><code>$ git rebase -i 49687a0a646954afdf3f4dae1f914ea793341ea2
+</code></pre>
+
+<p>按下enter後會進到編輯模式</p>
+
+<p><strong>Step2：squash</strong></p>
+
+<p>一開始編輯視窗的內容是這樣
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pick 033beb4 b1
+</span><span class='line'>pick d426a8a b2&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Rebase 49687a0..d426a8a onto 49687a0&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>#&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Commands:&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>p, pick = use commit&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>r, reword = use commit, but edit the commit message&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>e, edit = use commit, but stop for amending&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>s, squash = use commit, but meld into previous commit&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>f, fixup = like "squash", but discard this commit's log message&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>x, exec = run command (the rest of the line) using shell&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>#&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>If you remove a line here THAT COMMIT WILL BE LOST.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>However, if you remove everything, the rebase will be aborted.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>#</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>分成兩個區塊：第一是rebase interactive要執行的指令，第二是每個指令的簡單說明('#'後的是注解)。在這個例子裡面，我們至少要搞懂以下兩個：</p>
+
+<pre><code>pick = use commit
+squash = use commit, but meld into previous commit
+</code></pre>
+
+<p>也就是說，pick是會執行該commit，而squash會把這個版本的commit合併到<strong>前一個</strong>commit。
+所以我們要將它改成：
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pick 033beb4 b1
+</span><span class='line'>squash d426a8a b2</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>也就是將d426a8a這個版本的commit併到版本號033beb4的commit，對應我們的例子，就是將b2合併到b1這個commit。</p>
+
+<p>在編輯完成後按下esc，打上:wq 儲存離開。</p>
+
+<p><strong>Step3：接著輸入新的commit message</strong></p>
+
+<p>剛進來這個畫面，它會告訴你原本兩個commit messages分別是b1和b2，現在你要輸入新的commit message，也就是b，建議可以把原本的訊息註解掉。
+```
+b</p>
+
+<h1>This is a combination of 2 commits.</h1>
+
+<h1>The first commit's message is:</h1>
+
+<h1>b1</h1>
+
+<p>#</p>
+
+<h1>This is the 2nd commit message:</h1>
+
+<p>#</p>
+
+<h1>b2</h1>
+
+<p>#</p>
+
+<h1>Please enter the commit message for your changes. Lines starting</h1>
+
+<h1>with '#' will be ignored, and an empty message aborts the commit.</h1>
+
+<h1>Not currently on any branch.</h1>
+
+<h1>Changes to be committed:</h1>
+
+<h1>(use "git reset HEAD <file>..." to unstage)</h1>
+
+<p>#</p>
+
+<h1>modified:   a.txt</h1>
+
+<p>#
+```</p>
+
+<p>編輯完成後一樣儲存離開。沒意外的話，會出現這樣的訊息：<em>Successfully rebased and updated refs/heads/develop.</em>。最後可以用git log這個指令來檢驗commits是不是變成我們要的樣子：
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-> % git log
+</span><span class='line'>commit 27a1ff53137c6a35da1a83f4aa9ab7f652a5b4b2
+</span><span class='line'>Author: ChiaChia Lee &lt;a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#115;&#112;&#x69;&#100;&#101;&#114;&#109;&#x61;&#x6e;&#x30;&#x31;&#48;&#x33;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#115;&#x70;&#x69;&#x64;&#101;&#114;&#x6d;&#97;&#110;&#x30;&#x31;&#48;&#x33;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;&lt;/a>
+</span><span class='line'>Date:   Fri Dec 30 15:07:38 2011 +0800&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>b
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>commit 49687a0a646954afdf3f4dae1f914ea793341ea2
+</span><span class='line'>Author: ChiaChia Lee &lt;a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#115;&#x70;&#105;&#100;&#101;&#114;&#109;&#x61;&#110;&#x30;&#x31;&#x30;&#x33;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#115;&#112;&#x69;&#x64;&#101;&#114;&#109;&#x61;&#x6e;&#48;&#x31;&#x30;&#51;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;&lt;/a>
+</span><span class='line'>Date:   Fri Dec 30 15:07:29 2011 +0800&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>a
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

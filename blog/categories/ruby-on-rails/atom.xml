@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby on Rails | 李嘉玲的技術筆記]]></title>
+  <link href="http://zerodie.github.com/blog/categories/ruby-on-rails/atom.xml" rel="self"/>
+  <link href="http://zerodie.github.com/"/>
+  <updated>2013-10-22T12:21:53+08:00</updated>
+  <id>http://zerodie.github.com/</id>
+  <author>
+    <name><![CDATA[ChiaChia Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[useful helpers and functions in views]]></title>
+    <link href="http://zerodie.github.com/blog/2012/01/28/useful-helpers/"/>
+    <updated>2012-01-28T15:06:00+08:00</updated>
+    <id>http://zerodie.github.com/blog/2012/01/28/useful-helpers</id>
+    <content type="html"><![CDATA[<p>推薦幾個好用的helper&amp;functions：</p>
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/TextHelper/truncate"><strong>truncate</strong></a>: 文字內容超過一定長度的部分，顯示成"..."</p>
+
+<p>```ruby
+truncate("Once upon a time in a world far far away")
+=> "Once upon a time in a world..."</p>
+
+<p>truncate("Once upon a time in a world far far away", :length => 17)
+=> "Once upon a ti..."</p>
+
+<p>truncate("Once upon a time in a world far far away", :length => 17, :separator => ' ')
+=> "Once upon a..."
+```</p>
+
+<!-- more -->
+
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/TextHelper/simple_format"><strong>simple_format</strong></a>：將文字內容中 \n\r 自動轉 p 和 br 等HTML tags。</p>
+
+<p><code>ruby
+simple_format("Look ma! A class!", :class=&gt;'description')
+=&gt; "&lt;p class='description'&gt;Look ma! A class!&lt;/p&gt;"
+</code></p>
+
+<p><a href="http://apidock.com/rails/ActiveSupport/CoreExtensions/Array/Conversions/to_sentence"><strong>to_sentence</strong></a>：把Array內容用逗號或自訂字元分開。</p>
+
+<p>```ruby
+%w(lorem ipsum dolor sit).to_sentence
+=> "lorem, ipsum, dolor, and sit"</p>
+
+<p>%w(lorem ipsum dolor sit).to_sentence(:words_connector => ' + ')
+=> "lorem + ipsum + dolor, and sit"
+```</p>
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/NumberHelper/number_to_currency"><strong>number_to_currency</strong></a>：把數字轉成currency string。</p>
+
+<p><code>ruby
+Price is &lt;%= number_to_currency 13.5 %&gt;
+=&gt; Price is $13.50
+</code></p>
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/DateHelper/time_ago_in_words"><strong>time_ago_in_words</strong></a>：將時間轉成人性化文字。</p>
+
+<p>```ruby
+He was buried alive &lt;%= time_ago_in_words @zombie.created_at %> ago
+=> He was buried alive 2 days ago</p>
+
+<p>time_ago_in_words(Time.now - 15.hours)
+=> about 15 hours</p>
+
+<p>time_ago_in_words(Time.now)
+=> less than a minute
+```</p>
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/NumberHelper/number_to_human"><strong>number_to_human</strong></a>：將數字轉成human-readable的文字。</p>
+
+<p>```ruby
+Ash is &lt;%= number_to_human 13234355423 %> years old
+=> Ash is 13.2 billion years old</p>
+
+<p>```</p>
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/RecordTagHelper/div_for"><strong>div_for</strong></a>：div wrapper，並把class屬性設成model name、id值設成model_id。</p>
+
+<p>```ruby
+&lt;%= div_for(@person) do %>
+   &lt;%= @person.name %>
+&lt;% end %></p>
+
+<p>=> <div id="person_123" class="person"> Joe Bloggs </div>
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

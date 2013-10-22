@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: useful | 李嘉玲的技術筆記]]></title>
+  <link href="http://zerodie.github.com/blog/categories/useful/atom.xml" rel="self"/>
+  <link href="http://zerodie.github.com/"/>
+  <updated>2013-10-22T12:21:53+08:00</updated>
+  <id>http://zerodie.github.com/</id>
+  <author>
+    <name><![CDATA[ChiaChia Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[some useful ruby tips]]></title>
+    <link href="http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips/"/>
+    <updated>2013-10-22T09:53:00+08:00</updated>
+    <id>http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips</id>
+    <content type="html"><![CDATA[<ol>
+<li>有時候要印出ruby array的內容，用for loop如果沒判斷index，最後又會多一個逗號或空格
+<code>
+nums = [1, 3, 5, 9, 15]
+puts nums * "," #=&gt; "1,3,5,9,15"
+</code></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

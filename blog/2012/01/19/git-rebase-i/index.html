@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>如何合併多個commits - 李嘉玲的技術筆記</title>
+  <meta name="author" content="ChiaChia Lee">
+
+  
+  <meta name="description" content="如果你使用git做版本控管，在一個branch上開發一段時間後，commits看起來又多又雜亂，這個時候你可能會需要整理你的commits，將多個commits合併成1個，而git提供了一個指令可以幫助你完成這件事情：git rebase -i 一個簡單的範例，目標是：
+將原本git log a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zerodie.github.com/blog/2012/01/19/git-rebase-i">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="李嘉玲的技術筆記" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28748725-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">李嘉玲的技術筆記</a></h1>
+  
+    <h2>just jot down</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zerodie.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">如何合併多個commits</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T20:29:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>如果你使用git做版本控管，在一個branch上開發一段時間後，commits看起來又多又雜亂，這個時候你可能會需要整理你的commits，將多個commits合併成1個，而git提供了一個指令可以幫助你完成這件事情：git rebase -i</p>
+
+<!-- more -->
+
+
+<p>一個簡單的範例，目標是：
+將原本git log</p>
+
+<pre><code>a
+b1
+b2
+</code></pre>
+
+<p>變成</p>
+
+<pre><code>a
+b
+</code></pre>
+
+<p>也就是將兩個commits，b1和b2，合併成為b。
+那麼方法和步驟如下：</p>
+
+<p><strong>Step1：$ git rebase -i &lt;不變動的commit的SHA-1></strong></p>
+
+<p>例如此例就是a的SHA-1 (可用git log查看該commit的版本號)</p>
+
+<pre><code>$ git rebase -i 49687a0a646954afdf3f4dae1f914ea793341ea2
+</code></pre>
+
+<p>按下enter後會進到編輯模式</p>
+
+<p><strong>Step2：squash</strong></p>
+
+<p>一開始編輯視窗的內容是這樣</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pick 033beb4 b1
+</span><span class='line'>pick d426a8a b2
+</span><span class='line'>
+</span><span class='line'># Rebase 49687a0..d426a8a onto 49687a0
+</span><span class='line'>#
+</span><span class='line'># Commands:
+</span><span class='line'>#  p, pick = use commit
+</span><span class='line'>#  r, reword = use commit, but edit the commit message
+</span><span class='line'>#  e, edit = use commit, but stop for amending
+</span><span class='line'>#  s, squash = use commit, but meld into previous commit
+</span><span class='line'>#  f, fixup = like "squash", but discard this commit's log message
+</span><span class='line'>#  x, exec = run command (the rest of the line) using shell
+</span><span class='line'>#
+</span><span class='line'># If you remove a line here THAT COMMIT WILL BE LOST.
+</span><span class='line'># However, if you remove everything, the rebase will be aborted.
+</span><span class='line'>#</span></code></pre></td></tr></table></div></figure>
+
+
+<p>分成兩個區塊：第一是rebase interactive要執行的指令，第二是每個指令的簡單說明(&#8216;#&#8217;後的是注解)。在這個例子裡面，我們至少要搞懂以下兩個：</p>
+
+<pre><code>pick = use commit
+squash = use commit, but meld into previous commit
+</code></pre>
+
+<p>也就是說，pick是會執行該commit，而squash會把這個版本的commit合併到<strong>前一個</strong>commit。
+所以我們要將它改成：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pick 033beb4 b1
+</span><span class='line'>squash d426a8a b2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也就是將d426a8a這個版本的commit併到版本號033beb4的commit，對應我們的例子，就是將b2合併到b1這個commit。</p>
+
+<p>在編輯完成後按下esc，打上:wq 儲存離開。</p>
+
+<p><strong>Step3：接著輸入新的commit message</strong></p>
+
+<p>剛進來這個畫面，它會告訴你原本兩個commit messages分別是b1和b2，現在你要輸入新的commit message，也就是b，建議可以把原本的訊息註解掉。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>b
+</span><span class='line'># This is a combination of 2 commits.
+</span><span class='line'># The first commit's message is:
+</span><span class='line'># b1
+</span><span class='line'>#
+</span><span class='line'># This is the 2nd commit message:
+</span><span class='line'>#
+</span><span class='line'># b2
+</span><span class='line'>#
+</span><span class='line'># Please enter the commit message for your changes. Lines starting
+</span><span class='line'># with '#' will be ignored, and an empty message aborts the commit.
+</span><span class='line'># Not currently on any branch.
+</span><span class='line'># Changes to be committed:
+</span><span class='line'>#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+</span><span class='line'>#
+</span><span class='line'>#       modified:   a.txt
+</span><span class='line'>#</span></code></pre></td></tr></table></div></figure>
+
+
+<p>編輯完成後一樣儲存離開。沒意外的話，會出現這樣的訊息：<em>Successfully rebased and updated refs/heads/develop.</em>。最後可以用git log這個指令來檢驗commits是不是變成我們要的樣子：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-> % git log
+</span><span class='line'>commit 27a1ff53137c6a35da1a83f4aa9ab7f652a5b4b2
+</span><span class='line'>Author: ChiaChia Lee &lt;spiderman0103@gmail.com>
+</span><span class='line'>Date:   Fri Dec 30 15:07:38 2011 +0800
+</span><span class='line'>
+</span><span class='line'>    b
+</span><span class='line'>
+</span><span class='line'>commit 49687a0a646954afdf3f4dae1f914ea793341ea2
+</span><span class='line'>Author: ChiaChia Lee &lt;spiderman0103@gmail.com>
+</span><span class='line'>Date:   Fri Dec 30 15:07:29 2011 +0800
+</span><span class='line'>
+</span><span class='line'>    a</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChiaChia Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T20:29:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>Git</a>, <a class='category' href='/blog/categories/rebase/'>rebase</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zerodie.github.com/blog/2012/01/19/git-rebase-i/" data-via="zerodie" data-counturl="http://zerodie.github.com/blog/2012/01/19/git-rebase-i/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/19/octopress-github-pages/" title="Previous Post: Github page + Octopress">&laquo; Github page + Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/28/useful-helpers/" title="next Post: useful helpers and functions in views">useful helpers and functions in views &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/22/some-useful-ruby-tips/">some useful ruby tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/29/activo/">customized rails application theme - Activo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/28/useful-helpers/">useful helpers and functions in views</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/git-rebase-i/">如何合併多個commits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/octopress-github-pages/">Github page + Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+    <ul id="tweets">
+      <li class="loading">Status updating...</li>
+    </ul>
+    <script type="text/javascript">
+      $.domReady(function(){
+        getTwitterFeed("zerodie", 4, false);
+      });
+    </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerodie" class="twitter-follow-button" data-show-count="false">Follow @zerodie</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - ChiaChia Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerodie-github-page';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zerodie.github.com/blog/2012/01/19/git-rebase-i/';
+        var disqus_url = 'http://zerodie.github.com/blog/2012/01/19/git-rebase-i/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

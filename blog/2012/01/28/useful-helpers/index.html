@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>useful helpers and functions in views - 李嘉玲的技術筆記</title>
+  <meta name="author" content="ChiaChia Lee">
+
+  
+  <meta name="description" content="推薦幾個好用的helper&amp;functions： truncate: 文字內容超過一定長度的部分，顯示成&#8221;&#8230;&#8221; 1
+2
+3
+4
+5
+6
+7
+8
+truncate(&quot;Once upon a time in a world far far away &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zerodie.github.com/blog/2012/01/28/useful-helpers">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="李嘉玲的技術筆記" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28748725-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">李嘉玲的技術筆記</a></h1>
+  
+    <h2>just jot down</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zerodie.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Useful Helpers and Functions in Views</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-28T15:06:00+08:00" pubdate data-updated="true">Jan 28<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>推薦幾個好用的helper&amp;functions：</p>
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/TextHelper/truncate"><strong>truncate</strong></a>: 文字內容超過一定長度的部分，顯示成&#8221;&#8230;&#8221;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a time in a world...&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">,</span> <span class="ss">:length</span> <span class="o">=&gt;</span> <span class="mi">17</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a ti...&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">,</span> <span class="ss">:length</span> <span class="o">=&gt;</span> <span class="mi">17</span><span class="p">,</span> <span class="ss">:separator</span> <span class="o">=&gt;</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a...&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/TextHelper/simple_format"><strong>simple_format</strong></a>：將文字內容中 \n\r 自動轉 p 和 br 等HTML tags。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">simple_format</span><span class="p">(</span><span class="s2">&quot;Look ma! A class!&quot;</span><span class="p">,</span> <span class="ss">:class</span><span class="o">=&gt;</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;&lt;p class=&#39;description&#39;&gt;Look ma! A class!&lt;/p&gt;&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://apidock.com/rails/ActiveSupport/CoreExtensions/Array/Conversions/to_sentence"><strong>to_sentence</strong></a>：把Array內容用逗號或自訂字元分開。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sx">%w(lorem ipsum dolor sit)</span><span class="o">.</span><span class="n">to_sentence</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;lorem, ipsum, dolor, and sit&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">%w(lorem ipsum dolor sit)</span><span class="o">.</span><span class="n">to_sentence</span><span class="p">(</span><span class="ss">:words_connector</span> <span class="o">=&gt;</span> <span class="s1">&#39; + &#39;</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;lorem + ipsum + dolor, and sit&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/NumberHelper/number_to_currency"><strong>number_to_currency</strong></a>：把數字轉成currency string。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Price</span> <span class="n">is</span> <span class="o">&lt;</span><span class="sx">%= number_to_currency 13.5 %&gt;</span>
+</span><span class='line'><span class="sx">=</span><span class="o">&gt;</span> <span class="no">Price</span> <span class="n">is</span> <span class="vg">$13</span><span class="o">.</span><span class="mi">50</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/DateHelper/time_ago_in_words"><strong>time_ago_in_words</strong></a>：將時間轉成人性化文字。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">He</span> <span class="n">was</span> <span class="n">buried</span> <span class="n">alive</span> <span class="o">&lt;</span><span class="sx">%= time_ago_in_words @zombie.created_at %&gt; ago</span>
+</span><span class='line'><span class="sx">=</span><span class="o">&gt;</span> <span class="no">He</span> <span class="n">was</span> <span class="n">buried</span> <span class="n">alive</span> <span class="mi">2</span> <span class="n">days</span> <span class="n">ago</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">time_ago_in_words</span><span class="p">(</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="mi">15</span><span class="o">.</span><span class="n">hours</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="n">about</span> <span class="mi">15</span> <span class="n">hours</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">time_ago_in_words</span><span class="p">(</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="n">less</span> <span class="n">than</span> <span class="n">a</span> <span class="n">minute</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://apidock.com/rails/v3.1.0/ActionView/Helpers/NumberHelper/number_to_human"><strong>number_to_human</strong></a>：將數字轉成human-readable的文字。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Ash</span> <span class="n">is</span> <span class="o">&lt;</span><span class="sx">%= number_to_human 13234355423 %&gt; years old</span>
+</span><span class='line'><span class="sx">=</span><span class="o">&gt;</span> <span class="no">Ash</span> <span class="n">is</span> <span class="mi">13</span><span class="o">.</span><span class="mi">2</span> <span class="n">billion</span> <span class="n">years</span> <span class="n">old</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/RecordTagHelper/div_for"><strong>div_for</strong></a>：div wrapper，並把class屬性設成model name、id值設成model_id。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">%= div_for(@person) do %&gt;</span>
+</span><span class='line'><span class="sx">   &lt;%=</span> <span class="vi">@person</span><span class="o">.</span><span class="n">name</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">&lt;% end %&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;person_123&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="o">&gt;</span> <span class="no">Joe</span> <span class="no">Bloggs</span> <span class="o">&lt;</span><span class="sr">/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChiaChia Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-28T15:06:00+08:00" pubdate data-updated="true">Jan 28<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby-on-rails/'>Ruby on Rails</a>, <a class='category' href='/blog/categories/helpers/'>helpers</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zerodie.github.com/blog/2012/01/28/useful-helpers/" data-via="zerodie" data-counturl="http://zerodie.github.com/blog/2012/01/28/useful-helpers/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/19/git-rebase-i/" title="Previous Post: 如何合併多個commits">&laquo; 如何合併多個commits</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/29/activo/" title="next Post: customized rails application theme - Activo">customized rails application theme - Activo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/22/some-useful-ruby-tips/">some useful ruby tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/29/activo/">customized rails application theme - Activo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/28/useful-helpers/">useful helpers and functions in views</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/git-rebase-i/">如何合併多個commits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/octopress-github-pages/">Github page + Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+    <ul id="tweets">
+      <li class="loading">Status updating...</li>
+    </ul>
+    <script type="text/javascript">
+      $.domReady(function(){
+        getTwitterFeed("zerodie", 4, false);
+      });
+    </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerodie" class="twitter-follow-button" data-show-count="false">Follow @zerodie</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - ChiaChia Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerodie-github-page';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zerodie.github.com/blog/2012/01/28/useful-helpers/';
+        var disqus_url = 'http://zerodie.github.com/blog/2012/01/28/useful-helpers/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

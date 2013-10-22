@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>李嘉玲的技術筆記</title>
+  <title>some useful ruby tips - 李嘉玲的技術筆記</title>
   <meta name="author" content="ChiaChia Lee">
 
   
@@ -22,7 +22,7 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zerodie.github.com">
+  <link rel="canonical" href="http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,15 +78,12 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/10/22/some-useful-ruby-tips/">Some Useful Ruby Tips</a></h1>
+      <h1 class="entry-title">Some Useful Ruby Tips</h1>
     
     
       <p class="meta">
@@ -104,14 +101,14 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
 
 <time datetime="2013-10-22T09:53:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2013</time>
         
-         | <a href="/blog/2013/10/22/some-useful-ruby-tips/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><ol>
+<div class="entry-content"><ol>
 <li>有時候要印出ruby array的內容，用for loop如果沒判斷index，最後又會多一個逗號或空格</li>
 </ol>
 
@@ -124,67 +121,16 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
 
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/29/activo/">Customized Rails Application Theme - Activo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">ChiaChia Lee</span></span>
 
-<time datetime="2012-01-29T02:11:00+08:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/29/activo/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Activo簡介</h2>
-
-<p>當網站需求比較著重在功能面，又不擅長設計介面或專精於CSS時，要自己刻一套不太陽春的樣式和版面，實是一件繁瑣的事情。那麼此時，Actvio會是還不錯的選擇，它提供了許多還不錯的stylesheets、JavaScripts、icons。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/29/activo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/28/useful-helpers/">Useful Helpers and Functions in Views</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -196,143 +142,48 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
   
 
 
-<time datetime="2012-01-28T15:06:00+08:00" pubdate data-updated="true">Jan 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/28/useful-helpers/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>推薦幾個好用的helper&amp;functions：</p>
-
-<p><a href="http://apidock.com/rails/ActionView/Helpers/TextHelper/truncate"><strong>truncate</strong></a>: 文字內容超過一定長度的部分，顯示成&#8221;&#8230;&#8221;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a time in a world...&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">,</span> <span class="ss">:length</span> <span class="o">=&gt;</span> <span class="mi">17</span><span class="p">)</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a ti...&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">truncate</span><span class="p">(</span><span class="s2">&quot;Once upon a time in a world far far away&quot;</span><span class="p">,</span> <span class="ss">:length</span> <span class="o">=&gt;</span> <span class="mi">17</span><span class="p">,</span> <span class="ss">:separator</span> <span class="o">=&gt;</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Once upon a...&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/28/useful-helpers/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2013-10-22T09:53:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2013</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/19/git-rebase-i/">如何合併多個commits</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/ruby/'>Ruby</a>, <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/useful/'>useful</a>
+  
+</span>
 
 
-<time datetime="2012-01-19T20:29:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/19/git-rebase-i/#disqus_thread">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>如果你使用git做版本控管，在一個branch上開發一段時間後，commits看起來又多又雜亂，這個時候你可能會需要整理你的commits，將多個commits合併成1個，而git提供了一個指令可以幫助你完成這件事情：git rebase -i</p>
-
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips/" data-via="zerodie" data-counturl="http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/19/git-rebase-i/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/19/octopress-github-pages/">Github Page + Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
+        <a class="basic-alignment left" href="/blog/2012/01/29/activo/" title="Previous Post: customized rails application theme - Activo">&laquo; customized rails application theme - Activo</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-19T18:15:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/01/19/octopress-github-pages/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>發現最近很多大大紛紛使用<a href="http://octopress.org/">Octopress</a>來建自己的部落格，我也來體驗一下吧。目標就是用Octopress建立自己的blog，host在Github page，網址是zerodie.github.com(host在github)。以下是本網站的生產過程：</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/01/19/octopress-github-pages/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -366,7 +217,7 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
 <section>
   <h1>Latest Tweets</h1>
     <ul id="tweets">
-      <li class="loading">Status updating&#8230;</li>
+      <li class="loading">Status updating...</li>
     </ul>
     <script type="text/javascript">
       $.domReady(function(){
@@ -386,6 +237,7 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -400,7 +252,10 @@ puts nums * "," #=&gt; "1,3,5,9,15" ">
       var disqus_shortname = 'zerodie-github-page';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips/';
+        var disqus_url = 'http://zerodie.github.com/blog/2013/10/22/some-useful-ruby-tips/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>customized rails application theme - Activo - 李嘉玲的技術筆記</title>
+  <meta name="author" content="ChiaChia Lee">
+
+  
+  <meta name="description" content="Activo簡介 當網站需求比較著重在功能面，又不擅長設計介面或專精於CSS時，要自己刻一套不太陽春的樣式和版面，實是一件繁瑣的事情。那麼此時，Actvio會是還不錯的選擇，它提供了許多還不錯的stylesheets、JavaScripts、icons。 Activo在GitHub上官網寫得很清楚 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zerodie.github.com/blog/2012/01/29/activo">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="李嘉玲的技術筆記" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28748725-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">李嘉玲的技術筆記</a></h1>
+  
+    <h2>just jot down</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zerodie.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Customized Rails Application Theme - Activo</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-29T02:11:00+08:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Activo簡介</h2>
+
+<p>當網站需求比較著重在功能面，又不擅長設計介面或專精於CSS時，要自己刻一套不太陽春的樣式和版面，實是一件繁瑣的事情。那麼此時，Actvio會是還不錯的選擇，它提供了許多還不錯的stylesheets、JavaScripts、icons。</p>
+
+<!-- more -->
+
+
+<p>Activo在GitHub上<a href="http://dmfrancisco.github.com/activo/">官網</a>寫得很清楚：</p>
+
+<blockquote><p><em>Activo is a theme for Web-app-theme, Formtastic and Attrtastic</em></p></blockquote>
+
+<p><a href="https://github.com/justinfrench/formtastic">Formtastic</a>和<a href="https://github.com/MBO/attrtastic">Attrtastic</a>是什麼呢？它們是Rails的gems。那這兩個gems主要是在做什麼呢？Formtastic能快速產生HTML form，而Attrtastic則是顯示ActiveRecord的詳細資料，在index和show這兩個views裡很實用。所以如果你跟我一樣網站是用rails寫的，而剛好你又使用了Formtastic或是Attrtastic這兩個gems，那麼你會更喜歡Activo，因為Activo在後期加入了專為這兩個gems設計的stylesheets，你只要把。此外，Activo還提供了一些jQuery plugin的css。如此一來，你的介面不會太醜，而且稱得上算是有些質感。</p>
+
+<p>在決定要不要使用Activo之前，或許可以先來看看<a href="http://dmfrancisco.github.com/activo/demo/activo.html">live demo</a>！另外你也可以參考<a href="https://github.com/dmfrancisco/activo/tree/activo-2">Activo2</a>，多提供了jQuery UI的樣式。除了Activo，當然還有今年twitter推出的<a href="http://twitter.github.com/bootstrap/">Bootstrap</a>，也是你可以考慮的web app樣式，不過我們這裡先不談。</p>
+
+<h2>simple use case in Rails 3.1 app</h2>
+
+<p>以下範例是一個真實Rails app的管理後台，功能是<strong>漂亮地顯示所有使用者名單</strong>(本範例未使用Formtastic和Attrtastic)。</p>
+
+<p>將Activo套用到你rails app步驟很簡單，只有三大步驟：</p>
+
+<p>Step1：切好後台的layout</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/admin.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">html</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s2">&quot;Content-Type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span><span class="sr"> /&gt;</span>
+</span><span class='line'><span class="sr">  &lt;title&gt;後台 - 使用者&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= stylesheet_link_tag &quot;activo/admin.css&quot; %&gt;</span>
+</span><span class='line'><span class="sx">&lt;/head&gt;</span>
+</span><span class='line'><span class="sx">&lt;body&gt;</span>
+</span><span class='line'><span class="sx">  &lt;div id=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;header&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= render &quot;layouts/admin_header&quot; %&gt;</span>
+</span><span class='line'><span class="sx">    &lt;/div&gt;</span>
+</span><span class='line'><span class="sx">    &lt;div id=</span><span class="s2">&quot;wrapper&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;wat-cf&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="sx">%= yield %&gt;</span>
+</span><span class='line'><span class="sx">      &lt;/div&gt;</span>
+</span><span class='line'><span class="sx">      &lt;div id=</span><span class="s2">&quot;sidebar&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="sx">%= yield :sidebar %&gt;</span>
+</span><span class='line'><span class="sx">      &lt;/div&gt;</span>
+</span><span class='line'><span class="sx">    &lt;/div&gt;</span>
+</span><span class='line'><span class="sx">  &lt;/div&gt;</span>
+</span><span class='line'><span class="sx"> &lt;script src=</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;</span>
+</span><span class='line'><span class="sr"> &lt;%= javascript_include_tag &quot;activo/</span><span class="n">admin</span><span class="o">.</span><span class="n">js</span><span class="s2">&quot; %&gt;</span>
+</span><span class='line'><span class="s2">&lt;/body&gt;</span>
+</span><span class='line'><span class="s2">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>activo/admin.css 這支css裡面要include你要用到的stylesheets、activo/admin.js同理。此範例是使用Rails 3.1，如何include可參考<a href="http://guides.rubyonrails.org/asset_pipeline.html">asset pipeline</a>。</p>
+
+<p>例如：</p>
+
+<figure class='code'><figcaption><span>app/views/layouts/admin.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">/* ...</span>
+</span><span class='line'><span class="sr">*= require_self</span>
+</span><span class='line'><span class="sr">*= require ./</span><span class="n">themes</span><span class="o">/</span><span class="n">activo</span><span class="o">/</span><span class="n">style</span><span class="o">.</span><span class="n">css</span>
+</span><span class='line'><span class="o">*=</span> <span class="n">require_tree</span> <span class="o">.</span>
+</span><span class='line'><span class="o">*/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step2：在controller裡面指定view的layout</p>
+
+<figure class='code'><figcaption><span>app/controllers/admin/users_controller.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Admin</span><span class="o">::</span><span class="no">UsersController</span>
+</span><span class='line'>  <span class="n">layout</span> <span class="s2">&quot;admin&quot;</span>
+</span><span class='line'>  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step3：搭配Activo的html和css，去修改view</p>
+
+<figure class='code'><figcaption><span>app/views/admin/users/index.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;block&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;block-tables&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;content&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">h2</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="o">&gt;</span><span class="err">使用者</span><span class="o">&lt;</span><span class="sr">/h2&gt;</span>
+</span><span class='line'><span class="sr">    &lt;div class=&quot;inner&quot;&gt;</span>
+</span><span class='line'><span class="sr">     &lt;h3 class=&quot;title&quot;&gt;使用者列表&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="n">table</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="no">ID</span><span class="o">&lt;</span><span class="sr">/th&gt;</span>
+</span><span class='line'><span class="sr">            &lt;th&gt;Email&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="n">th</span><span class="o">&gt;</span><span class="err">顯示名稱</span><span class="o">&lt;</span><span class="sr">/th&gt;</span>
+</span><span class='line'><span class="sr">            &lt;th class=&quot;last&quot;&gt;&amp;nbsp;&lt;/</span><span class="n">th</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+</span><span class='line'><span class="sr">     &lt;% @users.each do |user| %&gt;</span>
+</span><span class='line'><span class="sr">       &lt;tr class=&quot;&lt;%= cycle(&quot;odd&quot;, &quot;even&quot;) -%&gt;&quot;&gt;</span>
+</span><span class='line'><span class="sr">            &lt;td&gt;&lt;%= user.id %&gt;&lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+</span><span class='line'>          <span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= user.email %&gt;&lt;/td&gt;</span>
+</span><span class='line'><span class="sx">         &lt;td&gt;&lt;%=</span> <span class="n">user</span><span class="o">.</span><span class="n">nickname</span> <span class="sx">%&gt;&lt;/td&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="n">td</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="o">&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="sx">%= link_to admin_user_path(user), :method =</span><span class="o">&gt;</span> <span class="ss">:delete</span><span class="p">,</span> <span class="ss">:confirm</span> <span class="o">=&gt;</span> <span class="s2">&quot;確定要刪除這個使用者?&quot;</span> <span class="k">do</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">             &lt;%= image_tag &quot;activo/icons/24/cross.png&quot;, :alt =&gt;</span> <span class="s2">&quot;Remove&quot;</span><span class="p">,</span> <span class="ss">:mouseover</span> <span class="o">=&gt;</span> <span class="s2">&quot;activo/icons/24/cross-hover.png&quot;</span><span class="p">,</span> <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="s2">&quot;Delete&quot;</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">           &lt;% end %&gt;</span>
+</span><span class='line'>            <span class="o">&lt;</span><span class="sr">/td&gt;</span>
+</span><span class='line'><span class="sr">          &lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+</span><span class='line'><span class="sx">        &lt;/table&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s1">&#39;wat-cf&#39;</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span>
+</span><span class='line'><span class="sr">    &lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sr">/div&gt;</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第三步驟的過程是比較繁瑣的，你得檢視rails view所產生的html code，對應參考Activo的<a href="https://github.com/dmfrancisco/activo/blob/master/activo.html">activo.html</a>，搭配Activo提供的css修改classname, id等attributes，以達到你想要的介面樣貌。但整體而言，比起自己設計一個乾淨好看的介面，算是方便許多。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChiaChia Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-29T02:11:00+08:00" pubdate data-updated="true">Jan 29<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/activo/'>Activo</a>, <a class='category' href='/blog/categories/rails/'>Rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zerodie.github.com/blog/2012/01/29/activo/" data-via="zerodie" data-counturl="http://zerodie.github.com/blog/2012/01/29/activo/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/01/28/useful-helpers/" title="Previous Post: useful helpers and functions in views">&laquo; useful helpers and functions in views</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/10/22/some-useful-ruby-tips/" title="next Post: some useful ruby tips">some useful ruby tips &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/22/some-useful-ruby-tips/">some useful ruby tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/29/activo/">customized rails application theme - Activo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/28/useful-helpers/">useful helpers and functions in views</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/git-rebase-i/">如何合併多個commits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/octopress-github-pages/">Github page + Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+    <ul id="tweets">
+      <li class="loading">Status updating...</li>
+    </ul>
+    <script type="text/javascript">
+      $.domReady(function(){
+        getTwitterFeed("zerodie", 4, false);
+      });
+    </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerodie" class="twitter-follow-button" data-show-count="false">Follow @zerodie</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - ChiaChia Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerodie-github-page';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zerodie.github.com/blog/2012/01/29/activo/';
+        var disqus_url = 'http://zerodie.github.com/blog/2012/01/29/activo/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

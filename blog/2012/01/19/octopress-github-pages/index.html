@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Github page + Octopress - 李嘉玲的技術筆記</title>
+  <meta name="author" content="ChiaChia Lee">
+
+  
+  <meta name="description" content="發現最近很多大大紛紛使用Octopress來建自己的部落格，我也來體驗一下吧。目標就是用Octopress建立自己的blog，host在Github page，網址是zerodie.github.com(host在github)。以下是本網站的生產過程： Step1. 建立自己的Github &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zerodie.github.com/blog/2012/01/19/octopress-github-pages">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="李嘉玲的技術筆記" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28748725-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">李嘉玲的技術筆記</a></h1>
+  
+    <h2>just jot down</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zerodie.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Github Page + Octopress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T18:15:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>發現最近很多大大紛紛使用<a href="http://octopress.org/">Octopress</a>來建自己的部落格，我也來體驗一下吧。目標就是用Octopress建立自己的blog，host在Github page，網址是zerodie.github.com(host在github)。以下是本網站的生產過程：</p>
+
+<!--more -->
+
+
+<p><strong>Step1. 建立自己的<a href="http://pages.github.com/">Github page</a>:</strong></p>
+
+<p>首先來<a href="https://github.com/repositories/new">這裡</a>new一個github repository，在project name的地方填入username.github.com，以我自己為例就是zerodie.github.com</p>
+
+<p>接著按照他給你的setup步驟走完就是啦，不會太難。</p>
+
+<p><strong>Step2. Setup Octopress</strong></p>
+
+<p>參考：<a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
+
+<p>除了git以外，你還要用<a href="http://beginrescueend.com/rvm/install/">rvm</a>/<a href="https://github.com/sstephenson/rbenv">rbenv</a>安裝Ruby 1.9.2。所有設定步驟文件裡面寫得非常清楚：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rvm install 1.9.2 && rvm use 1.9.2
+</span><span class='line'>$ git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress    # If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).
+</span><span class='line'>$ ruby --version  # Should report Ruby 1.9.2
+</span><span class='line'>$ gem install bundler
+</span><span class='line'>$ bundle install
+</span><span class='line'>$ rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Step3. ：</strong></p>
+
+<p>參考：<a href="http://octopress.org/docs/deploying/github/">Deploying to Github Pages</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>輸入自己的Github Pages repository url，像我的就是：git@github.com:zerodie/zerodie.github.com.git。按下enter後：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate
+</span><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>開始產生blog，並複製產生的檔案到_deploy/底下，add&amp;commit&amp;push到master branch(現在應該是在source branch，先前的&#8221;rake setup_github_pages&#8221;指令所做的事情之一是將branch從master切換到source)。這個時候你會收到一封Github寄給你的信，標題是&#8221;[zerodie.github.com] Page build successful&#8221;，表示發佈成功。接著把修改的push回source：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m 'your message'
+</span><span class='line'>$ git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Step4. 設定blog參數</strong></p>
+
+<p>參考：<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a>
+這裡我只改了標題、副標題、作者，3rd party我用了Google Plus、Twitter、Facebook，之後這些buttons會顯示在文章的底下。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>title: 李嘉玲的技術筆記
+</span><span class='line'>subtitle: rails notes
+</span><span class='line'>author: ChiaChia Lee
+</span><span class='line'>...
+</span><span class='line'>twitter_user: zerodie
+</span><span class='line'>google_plus_one: true
+</span><span class='line'>facebook_like: true</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Step5. 開始寫文章啦</strong></p>
+
+<p>參考：<a href="http://octopress.org/docs/blogging/">blogging basic</a>文件：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake 'new_post["title"]'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>這裡值得注意的是，不知道為什麼，如果我按照文件範例下指令會有錯誤，&#8221;no matches found: new_post[title]&#8221;，所以要修正成rake &#8216;new_post[&#8220;title&#8221;]&#8217;，如果你知道原因的話歡迎留言給我。</p>
+
+<p>Octopress的網頁內容是使用Markdown語法，如果你沒寫過Markdown，這裡有<a href="http://markdown.tw/">Markdown語法的中文文件</a>，如果你的文章像本文一樣常用到code blocks，Octopress有<a href="http://octopress.org/docs/plugins/codeblock/">plugin</a>絕不能錯過。噢，順便推薦一個免費的markdown editor for MAC：<a href="http://mouapp.com/">Mou</a>。</p>
+
+<p>寫好一篇之後執行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate   # Generates posts and pages into the public directory
+</span><span class='line'>rake watch      # Watches source/ and sass/ for changes and regenerates
+</span><span class='line'>rake preview    # Watches, and mounts a webserver at http://localhost:4000</span></code></pre></td></tr></table></div></figure>
+
+
+<p>開啓瀏覽器http://localhost:4000應當要看到你的blog。</p>
+
+<p>最後別忘了push&amp;deploy</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add .
+</span><span class='line'>$ git commit -m "article：Github page + Octopress"
+</span><span class='line'>$ git push
+</span><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>來到http://zerodie.github.com，也就是這裡，你所看到的樣子囉:)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChiaChia Lee</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T18:15:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/github/'>Github</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zerodie.github.com/blog/2012/01/19/octopress-github-pages/" data-via="zerodie" data-counturl="http://zerodie.github.com/blog/2012/01/19/octopress-github-pages/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/19/git-rebase-i/" title="next Post: 如何合併多個commits">如何合併多個commits &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/22/some-useful-ruby-tips/">some useful ruby tips</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/29/activo/">customized rails application theme - Activo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/28/useful-helpers/">useful helpers and functions in views</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/git-rebase-i/">如何合併多個commits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/19/octopress-github-pages/">Github page + Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+    <ul id="tweets">
+      <li class="loading">Status updating...</li>
+    </ul>
+    <script type="text/javascript">
+      $.domReady(function(){
+        getTwitterFeed("zerodie", 4, false);
+      });
+    </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/zerodie" class="twitter-follow-button" data-show-count="false">Follow @zerodie</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - ChiaChia Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zerodie-github-page';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zerodie.github.com/blog/2012/01/19/octopress-github-pages/';
+        var disqus_url = 'http://zerodie.github.com/blog/2012/01/19/octopress-github-pages/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
